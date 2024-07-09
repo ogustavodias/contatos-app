@@ -24,4 +24,8 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background-color: var(--bg-primary);
   }
+
+  li {
+    list-style: none;
+  }
 `;
