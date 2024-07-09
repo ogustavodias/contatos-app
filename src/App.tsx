@@ -1,3 +1,6 @@
+// React
+import React from "react";
+
 // Styles
 import { GlobalStyle } from "./styles/Global";
 
@@ -9,15 +12,17 @@ import Modal from "./components/Modal";
 import Form from "./components/Form";
 
 function App() {
+  const [modalOpen, setModalOpen] = React.useState(false);
+
   return (
     <main>
       <GlobalStyle />
       <Header />
       <Contacts />
-      <Modal>
-        <Form />
+      <Modal modalOpen={modalOpen}>
+        <Form setModalOpen={setModalOpen} />
       </Modal>
-      <OpenModalButton />
+      <OpenModalButton onClick={() => setModalOpen(true)} />
     </main>
   );
 }

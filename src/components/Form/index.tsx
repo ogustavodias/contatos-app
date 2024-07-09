@@ -4,7 +4,11 @@ import * as S from "./styles";
 // Components
 import Input from "../Input";
 
-const Form = () => {
+interface Props {
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Form = ({ setModalOpen }: Props) => {
   return (
     <S.Container>
       <S.Title>Novo contato</S.Title>
@@ -34,7 +38,9 @@ const Form = () => {
         />
         <S.Actions>
           <S.SaveButton>Salvar</S.SaveButton>
-          <S.CancelButton>Cancelar</S.CancelButton>
+          <S.CancelButton onClick={() => setModalOpen(false)}>
+            Cancelar
+          </S.CancelButton>
         </S.Actions>
       </form>
     </S.Container>

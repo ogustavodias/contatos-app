@@ -4,10 +4,12 @@ import * as S from "./styles";
 // React Typescript
 import { PropsWithChildren } from "react";
 
-const Modal = ({ children }: PropsWithChildren) => {
-  const open = true;
+interface Props extends PropsWithChildren {
+  modalOpen: boolean;
+}
 
-  if (!open) return;
+const Modal = ({ children, modalOpen }: Props) => {
+  if (!modalOpen) return;
 
   // Else
   return <S.Container>{children}</S.Container>;

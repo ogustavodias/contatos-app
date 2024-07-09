@@ -3,10 +3,11 @@ import * as S from "./styles";
 
 // SRC of icon
 import addIcon from "../../assets/add-user.png";
+import { ButtonHTMLAttributes } from "react";
 
-const OpenModalButton = () => {
+const OpenModalButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) => {
   return (
-    <S.Button>
+    <S.Button {...props}>
       <img src={addIcon} />
     </S.Button>
   );
