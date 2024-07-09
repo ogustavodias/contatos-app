@@ -20,4 +20,8 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     font-size: 16px;
   }
+
+  body {
+    background-color: var(--bg-primary);
+  }
 `;
