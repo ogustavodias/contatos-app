@@ -6,7 +6,7 @@ export const Button = styled.button`
   right: 40px;
   height: 60px;
   width: 60px;
-  background-color: var(--green-sucess);
+  background-color: var(--green-success);
   border-radius: 50%;
   border: none;
   cursor: pointer;

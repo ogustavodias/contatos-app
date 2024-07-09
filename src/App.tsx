@@ -5,6 +5,8 @@ import { GlobalStyle } from "./styles/Global";
 import Header from "./components/Header";
 import OpenModalButton from "./components/OpenModalButton";
 import Contacts from "./components/Contacts";
+import Modal from "./components/Modal";
+import Form from "./components/Form";
 
 function App() {
   return (
@@ -12,6 +14,9 @@ function App() {
       <GlobalStyle />
       <Header />
       <Contacts />
+      <Modal>
+        <Form />
+      </Modal>
       <OpenModalButton />
     </main>
   );

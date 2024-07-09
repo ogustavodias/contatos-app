@@ -1,8 +1,15 @@
+// Styled-components
 import styled from "styled-components";
 
-export const Container = styled.div`
+// Types and Interfaces
+import { Props } from ".";
+
+type ContainerProps = Omit<Props, "label">;
+
+export const Container = styled.div<ContainerProps>`
   display: flex;
-  align-items: center;
+  flex-direction: ${(props) => (props.display === "block" ? "column" : "row")};
+  align-items: ${(props) => (props.display === "block" ? "initial" : "center")};
   gap: 8px;
 
   label {
@@ -22,4 +29,11 @@ export const Container = styled.div`
       color: var(--white-emerald);
     }
   }
+`;
+
+export const Optional = styled.span`
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--bg-secundary);
+  margin-left: 8px;
 `;
