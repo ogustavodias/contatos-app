@@ -39,3 +39,27 @@ export const Nickname = styled.span`
   color: var(--white-emerald);
   font-size: 14px;
 `;
+
+export const EmptyMessage = styled.p`
+  color: var(--white);
+  font-weight: 700;
+`;
+
+export const Trash = styled.button`
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  width: 30px;
+  margin-left: auto;
+  margin-right: 20px;
+  transition: transform 0.3s ease;
+
+  img {
+    display: block;
+    width: 100%;
+  }
+
+  &:hover {
+    transform: scale(0.8);
+  }
+`;

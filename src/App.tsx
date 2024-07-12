@@ -10,9 +10,16 @@ import OpenModalButton from "./components/OpenModalButton";
 import Contacts from "./components/Contacts";
 import Modal from "./components/Modal";
 import Form from "./components/Form";
+import { useSelector } from "react-redux";
+import { RootState } from "./redux/configureStore";
 
 function App() {
   const [modalOpen, setModalOpen] = React.useState(false);
+  const { inEditing } = useSelector((state: RootState) => state.contacts);
+
+  React.useEffect(() => {
+    if (inEditing) setModalOpen(true);
+  }, [inEditing]);
 
   return (
     <main>
