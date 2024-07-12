@@ -21,10 +21,18 @@ const slice = createSlice({
   name: "contacts",
   initialState,
   reducers: {
-    add(state, action: PayloadAction<ContactWithoutId>) {
-      const indexOfLastElement = state.list.length - 1;
-      const last_id = state.list[indexOfLastElement].id;
-      state.list.push({ ...action.payload, id: last_id + 1 });
+    add(state, action: PayloadAction<ContactWithoutId | Contact>) {
+      if (!state.inEditing) {
+        const indexOfLastElement = state.list.length - 1;
+        const last_id = state.list[indexOfLastElement].id;
+        state.list.push({ ...action.payload, id: last_id + 1 });
+      } else {
+        const payloadId = (action.payload as Contact).id;
+        state.list = state.list.map((item) => {
+          if (item.id !== payloadId) return item;
+          else return action.payload as Contact;
+        });
+      }
     },
 
     remove(state, action: PayloadAction<number>) {
@@ -34,9 +42,13 @@ const slice = createSlice({
     edit(state, action: PayloadAction<Contact>) {
       state.inEditing = action.payload;
     },
+
+    endEdit(state) {
+      state.inEditing = null;
+    },
   },
 });
 
-export const { add, remove, edit } = slice.actions;
+export const { add, remove, edit, endEdit } = slice.actions;
 
 export default slice.reducer;

@@ -9,7 +9,7 @@ import Input from "../Input";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { add } from "../../redux/reducers/contacts";
+import { add, endEdit } from "../../redux/reducers/contacts";
 import { RootState } from "../../redux/configureStore";
 
 interface Props {
@@ -28,7 +28,17 @@ const Form = ({ setModalOpen }: Props) => {
 
   function saveContact(e: FormEvent) {
     e.preventDefault();
-    dispatch(add({ name, nickname, tel, email }));
+    if (inEditing) {
+      dispatch(add({ name, nickname, tel, email, id: inEditing.id }));
+      dispatch(endEdit());
+    } else dispatch(add({ name, nickname, tel, email }));
+
+    setModalOpen(false);
+  }
+
+  function cancel() {
+    if (inEditing) dispatch(endEdit());
+    setModalOpen(false);
   }
 
   return (
@@ -68,7 +78,7 @@ const Form = ({ setModalOpen }: Props) => {
         />
         <S.Actions>
           <S.SaveButton type="submit">Salvar</S.SaveButton>
-          <S.CancelButton type="reset" onClick={() => setModalOpen(false)}>
+          <S.CancelButton type="reset" onClick={cancel}>
             Cancelar
           </S.CancelButton>
         </S.Actions>
