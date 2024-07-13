@@ -1,7 +1,16 @@
-import styled from "styled-components";
+// Styled-components
+import styled, { keyframes } from "styled-components";
 
 export const Container = styled.ul`
   padding: 160px 20px 20px;
+`;
+
+const show = keyframes`
+  from {
+    transform: translateX(-100px);
+  } to {
+    transform: initial;
+  }
 `;
 
 export const Card = styled.li`
@@ -11,6 +20,7 @@ export const Card = styled.li`
   background-color: var(--white-emerald-light);
   border-radius: 50px 8px 8px 50px;
   cursor: pointer;
+  animation: ${show} 0.3s ease forwards;
 
   &:not(:last-child) {
     margin-bottom: 30px;
