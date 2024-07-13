@@ -51,6 +51,7 @@ const Form = ({ setModalOpen }: Props) => {
           placeholder="Nome do contato"
           value={name}
           onChange={({ target }) => setName(target.value)}
+          required
         />
         <Input
           label={{ value: "Apelido", color: "#127369" }}
@@ -67,6 +68,7 @@ const Form = ({ setModalOpen }: Props) => {
           placeholder="Número de telefone do contato"
           value={tel}
           onChange={({ target }) => setTel(target.value)}
+          required
         />
         <Input
           label={{ value: "E-mail", color: "#127369" }}
@@ -75,6 +77,7 @@ const Form = ({ setModalOpen }: Props) => {
           placeholder="E-mail do contato"
           value={email}
           onChange={({ target }) => setEmail(target.value)}
+          required
         />
         <S.Actions>
           <S.SaveButton type="submit">Salvar</S.SaveButton>
