@@ -3,6 +3,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 // Types and Interfaces
 import { Contact, ContactWithoutId } from "../../models/contacts";
+
+// Helper functions
 import { getLocalStorage } from "../midlewares/localStorage";
 
 export interface InitialContacts {
@@ -11,7 +13,7 @@ export interface InitialContacts {
 }
 
 const initialState: InitialContacts = {
-  list: [...getLocalStorage("contacts")],
+  list: getLocalStorage("contacts") ? [...getLocalStorage("contacts")] : [],
   inEditing: null,
 };
 
