@@ -29,7 +29,7 @@ function App() {
       <GlobalStyle />
       <Header setSearch={setSearch} />
       <Contacts search={search} />
-      <Modal modalOpen={modalOpen}>
+      <Modal modalOpen={modalOpen} setModalOpen={setModalOpen}>
         <Form setModalOpen={setModalOpen} />
       </Modal>
       <OpenModalButton onClick={() => setModalOpen(true)} />
