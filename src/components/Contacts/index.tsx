@@ -6,8 +6,7 @@ import * as S from "./styles";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../redux/configureStore";
-import { edit, remove } from "../../redux/reducers/contacts";
+import { edit, remove, selectContacts } from "../../redux/reducers/contacts";
 
 // Icons SRC
 import trashIcon from "../../assets/trash-can.png";
@@ -20,13 +19,8 @@ interface Props {
 }
 
 const Contacts = ({ search }: Props) => {
-  const list = useSelector((state: RootState) =>
-    state.contacts.list.filter(
-      (item) =>
-        item.name.toLowerCase().includes(search.toLowerCase()) ||
-        item.nickname?.toLowerCase().includes(search.toLowerCase())
-    )
-  );
+  const list = useSelector(selectContacts(search));
+
   const dispatch = useDispatch();
 
   function handleCard(e: MouseEvent, payload: Contact) {

@@ -6,6 +6,7 @@ import { Contact, ContactWithoutId } from "../../models/contacts";
 
 // Helper functions
 import { getLocalStorage } from "../midlewares/localStorage";
+import { RootState } from "../configureStore";
 
 export interface InitialContacts {
   list: Contact[];
@@ -65,6 +66,13 @@ const slice = createSlice({
     },
   },
 });
+
+export const selectContacts = (search: string) => (state: RootState) =>
+  state.contacts.list.filter(
+    (item) =>
+      item.name.toLowerCase().includes(search.toLowerCase()) ||
+      item.nickname?.toLowerCase().includes(search.toLowerCase())
+  );
 
 export const { add, remove, edit, endEdit } = slice.actions;
 
