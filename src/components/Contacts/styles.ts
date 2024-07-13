@@ -3,6 +3,10 @@ import styled, { keyframes } from "styled-components";
 
 export const Container = styled.ul`
   padding: 160px 20px 20px;
+
+  @media only screen and (max-width: 500px) {
+    padding: 160px 10px 10px;
+  }
 `;
 
 const show = keyframes`
@@ -32,6 +36,7 @@ export const FirstLetterName = styled.span`
   align-items: center;
   justify-content: center;
   width: 100px;
+  min-width: 100px;
   height: 100px;
   margin-right: 12px;
   border-radius: 50%;
@@ -60,6 +65,7 @@ export const Trash = styled.button`
   cursor: pointer;
   border: none;
   width: 30px;
+  min-width: 30px;
   margin-left: auto;
   margin-right: 20px;
   transition: transform 0.3s ease;

@@ -50,6 +50,7 @@ const Form = ({ setModalOpen }: Props) => {
           display="block"
           placeholder="Nome do contato"
           value={name}
+          maxLength={18}
           onChange={({ target }) => setName(target.value)}
           required
         />
@@ -59,6 +60,7 @@ const Form = ({ setModalOpen }: Props) => {
           optional={true}
           placeholder="Apelido do contato"
           value={nickname}
+          maxLength={10}
           onChange={({ target }) => setNickname(target.value)}
         />
         <Input
