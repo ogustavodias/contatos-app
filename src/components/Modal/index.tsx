@@ -4,25 +4,14 @@ import * as S from "./styles";
 // React Typescript
 import { PropsWithChildren } from "react";
 
-// Redux
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../redux/configureStore";
-import { endEdit } from "../../redux/reducers/contacts";
-
 interface Props extends PropsWithChildren {
   modalOpen: boolean;
-  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  closeModal: () => void;
 }
 
-const Modal = ({ children, modalOpen, setModalOpen }: Props) => {
-  const { inEditing } = useSelector((state: RootState) => state.contacts);
-  const dispatch = useDispatch();
-
+const Modal = ({ children, modalOpen, closeModal }: Props) => {
   function checkOutsideClick(e: React.MouseEvent) {
-    if (e.target === e.currentTarget) {
-      if (inEditing) dispatch(endEdit());
-      setModalOpen(false);
-    }
+    if (e.target === e.currentTarget) closeModal();
   }
 
   if (!modalOpen) return;

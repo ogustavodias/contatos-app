@@ -5,7 +5,7 @@ import * as S from "./styles";
 import addIcon from "../../assets/add-user.png";
 import { ButtonHTMLAttributes } from "react";
 
-const OpenModalButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) => {
+const NewContactButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) => {
   return (
     <S.Button {...props}>
       <img src={addIcon} />
@@ -13,4 +13,4 @@ const OpenModalButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) => {
   );
 };
 
-export default OpenModalButton;
+export default NewContactButton;
