@@ -60,7 +60,8 @@ export const EmptyMessage = styled.p`
   font-weight: 700;
 `;
 
-export const Trash = styled.button`
+export const Trash = styled.img`
+  display: block;
   background-color: transparent;
   cursor: pointer;
   border: none;
@@ -69,11 +70,6 @@ export const Trash = styled.button`
   margin-left: auto;
   margin-right: 20px;
   transition: transform 0.3s ease;
-
-  img {
-    display: block;
-    width: 100%;
-  }
 
   &:hover {
     transform: scale(0.8);

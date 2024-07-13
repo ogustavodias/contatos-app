@@ -25,9 +25,30 @@ const Contacts = ({ search }: Props) => {
 
   function handleCard(e: MouseEvent, payload: Contact) {
     const { target } = e;
-    const firstParent = (target as HTMLElement).parentElement;
-    const remove = firstParent?.dataset.action === "remove";
-    if (!remove) dispatch(edit(payload));
+    const trash = (target as HTMLElement).dataset.action === "remove";
+    if (!trash) dispatch(edit(payload));
+  }
+
+  function showContacts() {
+    const contacts = list.map((item) => {
+      const firstLetterName = item.name.charAt(0).toUpperCase();
+      const nickName = item.nickname ? `(${item.nickname})` : "";
+
+      return (
+        <S.Card key={item.id} onClick={(e) => handleCard(e, item)}>
+          <S.FirstLetterName>{firstLetterName}</S.FirstLetterName>
+          <S.Name>{item.name}</S.Name>
+          <S.Nickname>{nickName}</S.Nickname>
+          <S.Trash
+            src={trashIcon}
+            onClick={() => dispatch(remove(item.id))}
+            data-action="remove"
+          />
+        </S.Card>
+      );
+    });
+
+    return contacts;
   }
 
   return (
@@ -35,24 +56,7 @@ const Contacts = ({ search }: Props) => {
       {!list.length ? (
         <S.EmptyMessage>Nenhum contato encontrado</S.EmptyMessage>
       ) : (
-        list.map((item) => {
-          return (
-            <S.Card key={item.id} onClick={(e) => handleCard(e, item)}>
-              <S.FirstLetterName>
-                {item.name.charAt(0).toUpperCase()}
-              </S.FirstLetterName>
-              <S.Name>{item.name}</S.Name>
-              {item.nickname ? <S.Nickname>({item.nickname})</S.Nickname> : ""}
-              <S.Trash
-                type="button"
-                onClick={() => dispatch(remove(item.id))}
-                data-action="remove"
-              >
-                <img src={trashIcon} />
-              </S.Trash>
-            </S.Card>
-          );
-        })
+        showContacts()
       )}
     </S.Container>
   );
