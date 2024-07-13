@@ -65,10 +65,12 @@ const Form = ({ setModalOpen }: Props) => {
           label={{ value: "Telefone", color: "#127369" }}
           display="block"
           type="tel"
+          autoComplete="tel"
           placeholder="Número de telefone do contato"
           value={tel}
           onChange={({ target }) => setTel(target.value)}
           required
+          mask="+55 (99) 99999-9999"
         />
         <Input
           label={{ value: "E-mail", color: "#127369" }}
