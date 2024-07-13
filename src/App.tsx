@@ -10,11 +10,14 @@ import OpenModalButton from "./components/OpenModalButton";
 import Contacts from "./components/Contacts";
 import Modal from "./components/Modal";
 import Form from "./components/Form";
+
+// Redux
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/configureStore";
 
 function App() {
   const [modalOpen, setModalOpen] = React.useState(false);
+  const [search, setSearch] = React.useState("");
   const { inEditing } = useSelector((state: RootState) => state.contacts);
 
   React.useEffect(() => {
@@ -24,8 +27,8 @@ function App() {
   return (
     <main>
       <GlobalStyle />
-      <Header />
-      <Contacts />
+      <Header setSearch={setSearch} />
+      <Contacts search={search} />
       <Modal modalOpen={modalOpen}>
         <Form setModalOpen={setModalOpen} />
       </Modal>
